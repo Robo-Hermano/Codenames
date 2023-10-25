@@ -1,4 +1,3 @@
-import tkinter as tk
 from tkinter import *
 from tkinter import ttk
 from tkinter.ttk import *
@@ -236,7 +235,7 @@ class Codenames:
         self.one.forget()
         self.two.forget()
         self.three.forget()
-        win_label = Label(self.master, text=player+" and "+playor+" have reached 8 points and won!",font=("Calibri",20))
+        win_label = Label(self.master, text=player+" and "+playor+" have reached 8 points and won!",font=("Calibri",21))
         win_label.pack(expand=True)
 #time to finally run the class
 Codenames().master.mainloop()
