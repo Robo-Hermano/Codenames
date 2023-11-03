@@ -170,57 +170,67 @@ class Codenames:
     def button_click(self, button, row, col):
         #to change points when players choose a word
         self.bruv = self.totot.get("1.0","end-1c")
-        self.number += 1
-        if couleur[row][col] == "blue":
-            self.p1 += 1
-            self.one.config(text=self.nom1+" and "+self.nom2+"'s points: "+str(self.p1),font=("Calibri",20))
-            self.three.config(text="blue card, "+self.nom1+" and "+self.nom2+" gets a point",font=("Calibri",20))
-            if self.turn == 5:
-                self.turn = 2
-                self.number = 0
-                self.checker.config(text=self.nom2+"'s turn. What number did "+self.nom1+" say?",font=("Calibri",20))
-            elif int(self.bruv) == self.number:
-                self.turn = 5
-                self.number = 0
-                self.checker.config(text=self.nom4+"'s turn. What number did "+self.nom3+" say?",font=("Calibri",20))
-        elif couleur[row][col] == "red":
-            self.p2 += 1
-            self.two.config(text=self.nom3+" and "+self.nom4+"'s points: "+str(self.p2))
-            self.three.config(text="red card, "+self.nom3+" and "+self.nom4+" gets a point")
-            if self.turn == 2:
-                self.turn = 5
-                self.number = 0
-                self.checker.config(text=self.nom4+"'s turn. What number did "+self.nom3+" say?")
-            elif int(self.bruv)==self.number:
-                self.turn = 2
-                self.number = 0
-                self.checker.config(text=self.nom2+"'s turn. What number did "+self.nom1+" say?")
-        elif couleur[row][col] == "black":
-            #peculiar card, loses the game for the team who picked the card
-            self.checker.forget()
-            self.grid.forget()
-            self.one.forget()
-            self.two.forget()
-            self.three.forget()
-            self.totot.forget()
-            if self.turn == 5:
-                self.e = Label(self.master,text="Black card, "+self.nom1+" and "+self.nom2+" have won!",font=("Calibri",20))
-                self.e.pack(expand=True)
-            else:
-                self.e = Label(self.master,text="Black card, "+self.nom3+" and "+self.nom4+" have won!",font=("Calibri",20))
-                self.e.pack(expand=True)
+        #input sanitisation
+        sanitised = True
+        try:
+            checky2 = int(self.bruv)/2
+        except:
+            sanitised = False
+        if sanitised == False:
+            self.checker.config(text="input must be number",font=("Calibri",30)
         else:
-            self.three.config(text="green card, nothing happens")
-            if int(self.bruv) == self.number:
-                #since 2*5 = 10, I can just divide 10 by the turn checker to change turns
-                self.turn = 10/self.turn
-                self.number = 0
-                if self.turn == 2:
+            self.number += 1
+            if couleur[row][col] == "blue":
+                self.p1 += 1
+                self.one.config(text=self.nom1+" and "+self.nom2+"'s points: "+str(self.p1),font=("Calibri",20))
+                self.three.config(text="blue card, "+self.nom1+" and "+self.nom2+" gets a point",font=("Calibri",20))
+                if self.turn == 5:
+                    self.turn = 2
+                    self.number = 0
                     self.checker.config(text=self.nom2+"'s turn. What number did "+self.nom1+" say?",font=("Calibri",20))
-                else:
+                elif int(self.bruv) == self.number:
+                    self.turn = 5
+                    self.number = 0
                     self.checker.config(text=self.nom4+"'s turn. What number did "+self.nom3+" say?",font=("Calibri",20))
-        button.config(state=DISABLED)
-        self.check_win()
+            elif couleur[row][col] == "red":
+                self.p2 += 1
+                self.two.config(text=self.nom3+" and "+self.nom4+"'s points: "+str(self.p2))
+                self.three.config(text="red card, "+self.nom3+" and "+self.nom4+" gets a point")
+                if self.turn == 2:
+                    self.turn = 5
+                    self.number = 0
+                    self.checker.config(text=self.nom4+"'s turn. What number did "+self.nom3+" say?")
+                elif int(self.bruv)==self.number:
+                    self.turn = 2
+                    self.number = 0
+                    self.checker.config(text=self.nom2+"'s turn. What number did "+self.nom1+" say?")
+            elif couleur[row][col] == "black":
+                #peculiar card, loses the game for the team who picked the card
+                self.checker.forget()
+                self.grid.forget()
+                self.one.forget()
+                self.two.forget()
+                self.three.forget()
+                self.totot.forget()
+                if self.turn == 5:
+                    self.e = Label(self.master,text="Black card, "+self.nom1+" and "+self.nom2+" have won!",font=("Calibri",20))
+                    self.e.pack(expand=True)
+                else:
+                    self.e = Label(self.master,text="Black card, "+self.nom3+" and "+self.nom4+" have won!",font=("Calibri",20))
+                    self.e.pack(expand=True)
+            else:
+                #green card
+                self.three.config(text="green card, nothing happens")
+                if int(self.bruv) == self.number:
+                #since 2*5 = 10, I can just divide 10 by the turn checker to change turns
+                    self.turn = 10/self.turn
+                    self.number = 0
+                    if self.turn == 2:
+                        self.checker.config(text=self.nom2+"'s turn. What number did "+self.nom1+" say?",font=("Calibri",20))
+                    else:
+                        self.checker.config(text=self.nom4+"'s turn. What number did "+self.nom3+" say?",font=("Calibri",20))
+            button.config(state=DISABLED)
+            self.check_win()
         #to check if a team wins
     def check_win(self):
         if self.p1 == 8:
