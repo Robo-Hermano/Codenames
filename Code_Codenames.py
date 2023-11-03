@@ -248,4 +248,11 @@ class Codenames:
         win_label = Label(self.master, text=player+" and "+playor+" have reached 8 points and won!",font=("Calibri",21))
         win_label.pack(expand=True)
 #time to finally run the class
-Codenames().master.mainloop()
+while True:
+    Codenames().master.mainloop()
+    z = int(input("enter 0 if you want to play again"))
+    if z == 0:
+        board = create_board()
+        couleur = create_couleur()
+    else:
+        break
