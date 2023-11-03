@@ -251,6 +251,7 @@ class Codenames:
 while True:
     Codenames().master.mainloop()
     z = int(input("enter 0 if you want to play again"))
+    #for restarting purposes :)
     if z == 0:
         board = create_board()
         couleur = create_couleur()
