@@ -1,11 +1,12 @@
+#import needed models
 from tkinter import *
 from tkinter import ttk
 from tkinter.ttk import *
 import random
-#introductions
 #red = "\033[31m"
 #blue = "\033[34m"
 #green = "\033[32m"
+#introductions
 introtext = "Welcome to codenames! This game of four teaches people to find the connections between words while making sure the fun remains.\nTwo teams of two duke it out. One player must use the colour board to help the other place the blue cards on words their own.\nIf you are the first player, you must say a word not in the grid and state how many words it relates to, using the colour board of the word grid.\nIf you are the second player, you must use this to pick cards that are blue (for team one) or red (for team two).\nWords that are blue give team one a point, red gives team two a point, and both changes turn if other side chooses them.\nGreen words do nothing, and the one black word makes the picking side lose.\nEnjoy this game, and glhf!"
 #create boards, make this more varied afterwards
 def create_board():
