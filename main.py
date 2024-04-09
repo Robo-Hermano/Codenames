@@ -30,7 +30,6 @@ def create_board():
             board[i].append(lst[a])
             lst.remove(lst[a])
     return board
-board = create_board()
 #for colour linking to real board, crucial for the game
 def create_couleur():
     couleur = [[],[],[],[],[]]
@@ -46,7 +45,6 @@ def create_couleur():
             couleur[i].append(lst[a])
             lst.remove(lst[a])
     return couleur
-couleur = create_couleur()
 class Codenames:
     #easier to run functions one by one starting with __init__
     def __init__(self):
@@ -250,11 +248,10 @@ class Codenames:
         win_label.pack(expand=True)
 #time to finally run the class
 while True:
+    board = create_board()
+    couleur = create_couleur()
     Codenames().master.mainloop()
     z = int(input("enter 0 if you want to play again"))
     #for restarting purposes :)
-    if z == 0:
-        board = create_board()
-        couleur = create_couleur()
-    else:
+    if z != 0:
         break
