@@ -2,11 +2,11 @@
 
 import tkinter as tk
 from tkinter import messagebox
-from tkinter.PIL import ImageTk, Image
+from PIL import ImageTk, Image
 import math
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.back_ends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import sys
 sys.path.append("/GUI_science_calculator/infos.py")
 import infos as INFO_FILE
