@@ -224,7 +224,7 @@ class Sci_Calculator:
     self.react_series.grid(row = 1, column = 0)
     self.periodic_table = tk.Button(self.chem_frame, text = "Periodic Table", command = lambda:self.display_image(table_periodic, self.chem_menu, "chem_menu"))
     self.periodic_table.grid(row = 1, column = 1)
-    self.ionic = tk.Button(self.chem_frame, text = "Ionic Equations (COMING SOON)", state = DISABLED)
+    self.ionic = tk.Button(self.chem_frame, text = "Ionic Equations (COMING SOON)")
     self.ionic.grid(row = 1, column = 2)
     go_back = tk.Button(self.chem_frame, text = "Return to main menu", command = lambda:self.return_to_menu("main_menu", args = [self.chem_frame]))
     go_back.grid(row = 2, column = 1)
@@ -242,7 +242,7 @@ class Sci_Calculator:
     self.punnett.grid(row = 1, column = 0)
     self.aminos = tk.Button(self.bio_frame, text = "Amino Acids", command = self.amino_acids)
     self.aminos.grid(row = 1, column = 1)
-    self.cells = tk.Button(self.bio_frame, text = "Animal Cell Diagram", command = lambda:self.display_image(cell_image, self.bio_frame, "bio_menu"))
+    self.cells = tk.Button(self.bio_frame, text = "Animal Cell Diagram", command = lambda:self.display_image(cells_image, self.bio_frame, "bio_menu"))
     self.cells.grid(row = 1, column = 2)
     go_back = tk.Button(self.bio_frame, text = "Return to Main Menu", command = lambda:self.return_to_menu("main menu", args = [self.bio_frame]))
     go_back.grid(row = 2, column = 1)
@@ -529,7 +529,7 @@ class Sci_Calculator:
     self.go_back = tk.Button(self.master, text = "Return to main menu", command = lambda:self.return_to_menu("main_menu", args = [self.x_label, self.x_value, self.y_label, self.y_value, self.record_button, self.graph_button, self.graph_errors, self.go_back]))
     self.go_back.pack()
 
-  def record_values_for_graph(self)
+  def record_values_for_graph(self):
     try:
       x_val = self.x_value.get()
       y_val = self.y_value.get()
