@@ -176,7 +176,7 @@ class Codenames:
         except:
             sanitised = False
         if sanitised == False:
-            self.checker.config(text="input must be number",font=("Calibri",30)
+            self.checker.config(text="input must be number",font=("Calibri",30))
         else:
             self.number += 1
             if couleur[row][col] == "blue":
